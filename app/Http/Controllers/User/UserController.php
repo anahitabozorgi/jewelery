@@ -30,4 +30,21 @@ class UserController extends Controller
             return redirect()->back()->with('fail', 'something went wrong');
         }
     }
+
+    function check(Request $request){
+        $request->validate([
+            'email'=>'required|email|exists:users,email',
+            'password'=>'required'
+        ],[
+            'email.exists'=>'this email is not exists'
+        ]);
+
+        $creds = $request->only('email','password');
+        if(Auth::guard('web')->attempt($creds)){
+            return redirect()->route('user.home');
+        }
+        else{
+            return redirect()->route('user.login')->with('fail','incorrect data');
+        }
+    }
 }
