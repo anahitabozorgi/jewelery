@@ -8,5 +8,7 @@
 </head>
 <body>
     <p>user dashboard</p>
+    <a href="{{ route('user.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+    <form action="{{ route('user.logout') }}" method="post" class="d-none" id="logout-form">@csrf</form>
 </body>
 </html>

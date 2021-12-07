@@ -32,6 +32,8 @@ Route::prefix('user')->name('user.')->group(function(){
 
     Route::middleware(['auth'])->group(function(){
           Route::view('/home','dashboard.user.home')->name('home');
+          Route::post('/logout',[UserController::class,'logout'])->name('logout');
+
     });
 
 });
