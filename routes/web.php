@@ -37,3 +37,15 @@ Route::prefix('user')->name('user.')->group(function(){
     });
 
 });
+
+Route::prefix('admin')->name('admin.')->group(function(){
+
+    Route::middleware(['guest:admin','PreventBackHistory'])->group(function(){
+        Route::view('/login','dashboard.admin.login')->name('login');
+        Route::post('/check',[AdminController::class,'check'])->name('check');
+    });
+
+    Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
+        Route::view('/home','dashboard.admin.home')->name('home');
+    });
+});
