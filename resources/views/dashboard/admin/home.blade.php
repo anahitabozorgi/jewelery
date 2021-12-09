@@ -8,6 +8,7 @@
 </head>
 <body>
     <p>Admin dashboard</p>
+    <a href="">create new post</a>
     <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
     <form action="{{ route('admin.logout') }}" method="post" id="logout-form">@csrf</form>
 </body>
