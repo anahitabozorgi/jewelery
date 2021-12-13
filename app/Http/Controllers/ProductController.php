@@ -35,7 +35,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ID1 = $request->ID1;
+        $title1 = $request->title1;
+        $price1 = $request->price1;
+        $image1 = $request->file('file');
+        $imageName = time().'.'.$image1->extension();
+        $image1 ->move(public_path('images'),$imageName);
+        $gender1 = $request->gender1;
+        $color1 = $request->color1;
+        $filter1 = $request->filter1;
+
+        $product = new Product();
+        $product->ID1 = $ID1;
+        $product->title1 = $title1;
+        $product->price1 = $price1;
+        $product->image1 = $imageName;
+        $product->gender1 = $gender1;
+        $product->color1 = $color1;
+        $product->filter1 = $filter1;
+        
+        $product->save();
+
+        return back()->with('product_added','product has added');
+
     }
 
     /**
