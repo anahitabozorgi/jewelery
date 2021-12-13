@@ -10,6 +10,21 @@
     <p>Admin dashboard</p>
     <a href="{{ route('admin.create') }}">create new post</a>
     <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
-    <form action="{{ route('admin.logout') }}" method="post" id="logout-form">@csrf</form>
+    <form action="{{ route('admin.logout') }}" method="post" id="logout-form">@csrf</form><br>
+
+    <div>
+        @php
+           $dollar = "$";
+        @endphp
+        @foreach ($products as $product)
+            <tr>
+                <td>{{$product->title1}}</td><br>
+                <td>{{$product->price1}}</td>
+                <td>{{$dollar}}</td>
+                <td><img src="{{asset('images')}}/{{$product->image1}}" style="max-width:200px;"/></td>
+            </tr>
+        @endforeach
+    </div>
+
 </body>
 </html>

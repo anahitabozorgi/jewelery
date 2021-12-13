@@ -48,7 +48,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     });
 
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
-        Route::view('/home','dashboard.admin.home')->name('home');
+        Route::get('/home',[ProductController::class,'index'])->name('home');
         Route::post('/logout',[AdminController::class,'logout'])->name('logout');
         Route::get('/create',[ProductController::class,'create'])->name('create');
         Route::post('/create',[ProductController::class,'store'])->name('store');
