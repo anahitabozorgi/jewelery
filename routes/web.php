@@ -16,9 +16,9 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('main');
-});
+
+Route::get('/',[ProductController::class,'index1'])->name('home1');
+
 
 Auth::routes();
 
@@ -32,7 +32,7 @@ Route::prefix('user')->name('user.')->group(function(){
     });
 
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
-          Route::view('/home','dashboard.user.home')->name('home');
+        Route::get('/home',[ProductController::class,'index2'])->name('home');
           Route::post('/logout',[UserController::class,'logout'])->name('logout');
    
 

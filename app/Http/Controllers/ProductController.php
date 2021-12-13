@@ -18,6 +18,28 @@ class ProductController extends Controller
         return view('dashboard.admin.home',compact('products'));
     }
 
+        /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index1()
+    {
+        $products = Product::all();
+        return view('main',compact('products'));
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index2()
+    {
+        $products = Product::all();
+        return view('dashboard.user.home',compact('products'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -80,7 +102,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        
     }
 
     /**
