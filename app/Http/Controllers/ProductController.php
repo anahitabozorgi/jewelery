@@ -58,12 +58,32 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'ID1' => 'required',
+            'title1' => 'required',
+            'image1' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'price1' => 'required',
+            'gender1' => 'required',
+            'color1' => 'required',
+            'filter1' => 'required',
+        ],[
+            'ID1.required'=>'The ID field is required.',
+            'title1.required'=>'The Title field is required.',
+            'image1.mims'=>'The Image must be png.',
+            'price1.required'=>'The Price field is required.',
+            'gender1.required'=>'The Gender field is required.',
+            'color1.required'=>'The Color field is required.',
+            'filter1.required'=>'The Filter field is required.',
+        ]);
+
         $ID1 = $request->ID1;
         $title1 = $request->title1;
         $price1 = $request->price1;
-        $image1 = $request->file('file');
+        if($image1 = $request->file('file')){
         $imageName = time().'.'.$image1->extension();
         $image1 ->move(public_path('images'),$imageName);
+        }
+
         $gender1 = $request->gender1;
         $color1 = $request->color1;
         $filter1 = $request->filter1;
@@ -100,9 +120,10 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function edit(Product $product)
+    public function edit(Product $product,$id)
     {
-        
+        $product = Product::find($id);
+        return view('dashboard.products.edit',compact('product'));
     }
 
     /**
@@ -114,7 +135,48 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $request->validate([
+            'ID1' => 'required',
+            'title1' => 'required',
+            'image1' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'price1' => 'required',
+            'gender1' => 'required',
+            'color1' => 'required',
+            'filter1' => 'required',
+        ],[
+            'ID1.required'=>'The ID field is required.',
+            'title1.required'=>'The Title field is required.',
+            'image1.mims'=>'The Image must be png.',
+            'price1.required'=>'The Price field is required.',
+            'gender1.required'=>'The Gender field is required.',
+            'color1.required'=>'The Color field is required.',
+            'filter1.required'=>'The Filter field is required.',
+        ]);
+
+        $ID1 = $request->ID1;
+        $title1 = $request->title1;
+        $price1 = $request->price1;
+        $image1 = $request->file('file');
+        $imageName = time().'.'.$image1->extension();
+        $image1 ->move(public_path('images'),$imageName);
+        $gender1 = $request->gender1;
+        $color1 = $request->color1;
+        $filter1 = $request->filter1;
+
+        $product = Product::find($request->id);
+        $product->ID1 = $ID1;
+        $product->title1 = $title1;
+        $product->price1 = $price1;
+        $product->image1 = $imageName;
+        $product->gender1 = $gender1;
+        $product->color1 = $color1;
+        $product->filter1 = $filter1;
+        
+        $product->save();
+
+        return back()->with('product_updated','product has updated');
+
+
     }
 
     /**
@@ -123,8 +185,11 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product)
+    public function destroy(Product $product,$id)
     {
-        //
+        $product =  Product::find($id);
+        unlink(public_path('images').'/'.$product->image1);
+        $product->delete();
+        return back()->with('product_deleted', 'Product deleted successfully');
     }
 }

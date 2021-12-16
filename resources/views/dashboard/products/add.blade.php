@@ -9,6 +9,17 @@
 <body>
     <h2>Add New Post</h2>
     <div class="body">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         @if (Session::has('product_added'))
             <div class="alert alert-success" role="alert">
                 {{Session::get('product_added')}}

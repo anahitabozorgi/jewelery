@@ -52,7 +52,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/logout',[AdminController::class,'logout'])->name('logout');
         Route::get('/create',[ProductController::class,'create'])->name('create');
         Route::post('/create',[ProductController::class,'store'])->name('store');
-        
+        Route::get('/edit/{id}',[ProductController::class,'edit'])->name('edit');
+        Route::post('/update',[ProductController::class,'update'])->name('update');
+        Route::post('/delete/{id}',[ProductController::class,'destroy'])->name('destroy');
     });
 });
 
