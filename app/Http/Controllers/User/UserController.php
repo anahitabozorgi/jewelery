@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+
     function create(Request $request){
         $request->validate([
             'name'=>'required',
@@ -29,6 +30,33 @@ class UserController extends Controller
         }else{
             return redirect()->back()->with('fail', 'something went wrong');
         }
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\User  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, User $user)
+    {
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email|unique:users,email',
+            'password'=>'min:8|max:30',
+        ]);
+
+        $user = User::find($request->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = \Hash::make($request->password);
+        $save = $user->save();
+
+        return back()->with('user_updated','user profile has updated');
+
+
     }
 
     function check(Request $request){
