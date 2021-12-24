@@ -17,6 +17,7 @@
                 <td>{{$product->title1}}</td><br>
                 <td>{{$product->price1}}$</td>
                 <td><img src="{{asset('images')}}/{{$product->image1}}" style="max-width:200px;"/></td>
+                <td><a href="{{route('user.product.show',['id' => $product->id])}}">details</a></td>
             </tr>
         @endforeach
         @else
@@ -30,6 +31,7 @@
                     <td>{{$product->title1}}</td><br>
                     <td>{{$product->price1}}$</td>
                     <td><img src="{{asset('images')}}/{{$product->image1}}" style="max-width:200px;"/></td>
+                    <td><a href="{{route('product.show',['id' => $product->id])}}">details</a></td>
                 </tr>
             @endforeach
             @endif

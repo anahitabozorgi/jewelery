@@ -124,6 +124,24 @@ class ProductController extends Controller
         $product = Product::find($id);
         return view('dashboard.products.edit',compact('product'));
     }
+    
+        /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function show1(Product $product,$id)
+    {
+        $product = Product::find($id);
+        return view('dashboard.products.show1', ['product' => $product]);
+    }
+
+    public function show2(Product $product,$id)
+    {
+        $product = Product::find($id);
+        return view('dashboard.products.show2', ['product' => $product]);
+    }
 
     /**
      * Update the specified resource in storage.
