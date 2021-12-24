@@ -20,7 +20,6 @@ use App\Http\Controllers\ProductController;
 Route::get('/',[ProductController::class,'index1'])->name('home1');
 Route::get('/show/{id}', [ProductController::class, 'show'])->name('product.show');
 
-
 Auth::routes();
 
 Route::prefix('user')->name('user.')->group(function(){
