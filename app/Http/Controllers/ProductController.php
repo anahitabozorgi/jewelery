@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 {
@@ -141,6 +142,19 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         return view('dashboard.products.show2', ['product' => $product]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+
+    public function ring()
+    {
+        $rings = DB::table('products')->where('filter1', 'ring')->get();
+        return view('dashboard.filter.ring')->with('rings' , $rings);
     }
 
     /**

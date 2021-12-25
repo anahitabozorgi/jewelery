@@ -16,6 +16,7 @@
     <a href="{{ route('admin.create') }}">create new post</a>
     <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
     <form action="{{ route('admin.logout') }}" method="post" id="logout-form">@csrf</form><br>
+    <a href="{{route('ring')}}">ring</a>
 
     <div>
         @foreach ($products as $product)

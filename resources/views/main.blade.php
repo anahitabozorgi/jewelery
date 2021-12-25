@@ -12,6 +12,7 @@
         @auth
             <a href="{{ url('/user/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a><br>
             <br>
+            <a href="{{route('ring')}}">ring</a>
             @foreach ($products as $product)
             <tr>
                 <td>{{$product->title1}}</td><br>
@@ -25,6 +26,7 @@
             <br>
             @if (Route::has('user.register'))
                 <a href="{{ route('user.register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a><br>
+                <a href="{{route('ring')}}">ring</a>
                 <br>
                 @foreach ($products as $product)
                 <tr>
