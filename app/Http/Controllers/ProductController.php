@@ -157,6 +157,24 @@ class ProductController extends Controller
         return view('dashboard.filter.ring')->with('rings' , $rings);
     }
 
+    public function bracelet()
+    {
+        $bracelets = DB::table('products')->where('filter1', 'bracelet')->get();
+        return view('dashboard.filter.bracelet')->with('bracelets' , $bracelets);
+    }
+
+    public function necklaces()
+    {
+        $necklaces = DB::table('products')->where('filter1', 'necklaces')->get();
+        return view('dashboard.filter.necklaces')->with('necklaces' , $necklaces);
+    }
+
+    public function earing()
+    {
+        $earings = DB::table('products')->where('filter1', 'earing')->get();
+        return view('dashboard.filter.earing')->with('earings' , $earings);
+    }
+
     /**
      * Update the specified resource in storage.
      *
