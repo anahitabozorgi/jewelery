@@ -63,8 +63,6 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('/edit/{id}',[ProductController::class,'edit'])->name('edit');
         Route::post('/update',[ProductController::class,'update'])->name('update');
         Route::post('/delete/{id}',[ProductController::class,'destroy'])->name('destroy');
-        Route::view('/register','dashboard.admin.register')->name('register');
-        Route::post('/add',[AdminController::class,'create'])->name('add');
     });
 });
 
