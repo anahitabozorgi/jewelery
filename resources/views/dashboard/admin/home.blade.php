@@ -14,6 +14,7 @@
         </div>
     @endif
     <a href="{{ route('admin.create') }}">create new post</a>
+    <a href="{{ route('admin.register') }}">add admin</a>
     <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
     <form action="{{ route('admin.logout') }}" method="post" id="logout-form">@csrf</form><br>
     <a href="{{route('ring')}}">ring</a>
@@ -28,7 +29,9 @@
                 </td>
                 <td><img src="{{asset('images')}}/{{$product->image1}}" style="max-width:200px;"/></td>
                 <td><a href="{{route('admin.edit',['id' => $product->id])}}">edit</a></td>
+                <a href="{{ route('admin.create') }}">create new post</a>
                 <td><a href="{{route('admin.product.show',['id' => $product->id])}}">details</a></td>
+
                 <a href="{{ route('admin.destroy', ['id' => $product->id]) }}" onclick="event.preventDefault();document.getElementById('destroy-form').submit();">delete</a>
                 <form action="{{ route('admin.destroy',['id' => $product->id]) }}" method="post" class="d-none" id="destroy-form">@csrf</form><br>
             </tr>
