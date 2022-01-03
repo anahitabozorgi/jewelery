@@ -23,6 +23,7 @@ Route::get('/ring', [ProductController::class, 'ring'])->name('ring');
 Route::get('/bracelet', [ProductController::class, 'bracelet'])->name('bracelet');
 Route::get('/earing', [ProductController::class, 'earing'])->name('earing');
 Route::get('/necklaces', [ProductController::class, 'necklaces'])->name('necklaces');
+Route::get('/search', [ProductController::class,'search'])->name('search');
 
 Auth::routes();
 

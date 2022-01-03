@@ -241,4 +241,17 @@ class ProductController extends Controller
         $product->delete();
         return back()->with('product_deleted', 'Product deleted successfully');
     }
+
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+    
+        // Search in the title and body columns from the posts table
+        $products = Product::query()
+            ->where('title1', 'LIKE', "%{$search}%")
+            ->get();
+    
+        // Return the search view with the resluts compacted
+        return view('dashboardsearch', compact('products'));
+    }
 }

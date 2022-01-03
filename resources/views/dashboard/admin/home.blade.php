@@ -23,12 +23,9 @@
             <tr>
                 <td>{{$product->title1}}</td><br>
                 <td>{{$product->price1}}$</td><br>
-                <td>
-                    <a href=""></a>
-                </td>
                 <td><img src="{{asset('images')}}/{{$product->image1}}" style="max-width:200px;"/></td>
                 <td><a href="{{route('admin.edit',['id' => $product->id])}}">edit</a></td>
-                <a href="{{ route('admin.create') }}">create new post</a>
+
                 <td><a href="{{route('admin.product.show',['id' => $product->id])}}">details</a></td>
 
                 <a href="{{ route('admin.destroy', ['id' => $product->id]) }}" onclick="event.preventDefault();document.getElementById('destroy-form').submit();">delete</a>
