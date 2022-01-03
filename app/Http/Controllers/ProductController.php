@@ -252,6 +252,6 @@ class ProductController extends Controller
             ->get();
     
         // Return the search view with the resluts compacted
-        return view('dashboardsearch', compact('products'));
+        return view('dashboard.search', compact('products'));
     }
 }

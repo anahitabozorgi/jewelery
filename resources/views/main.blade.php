@@ -29,6 +29,10 @@
             <br>
             @if (Route::has('user.register'))
                 <a href="{{ route('user.register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a><br>
+                <form action="{{ route('search') }}" method="GET">
+                    <input type="text" name="search" required/>
+                    <button type="submit">Search</button>
+                </form>
                 <a href="{{route('ring')}}">Ring</a>
                 <a href="{{route('bracelet')}}">Bracelet</a>
                 <a href="{{route('earing')}}">Earing</a>
