@@ -45,6 +45,7 @@ Route::prefix('user')->name('user.')->group(function(){
         Route::post('/update',[UserController::class,'update'])->name('update');
         Route::post('/cart/{id}', [CartController::class, 'cart'])->name('product.cart');
         Route::get('/cart',[CartController::class, 'cartshow'])->name('product.cartshow');
+        Route::post('/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
    
 
     });

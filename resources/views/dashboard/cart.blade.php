@@ -15,3 +15,7 @@
 </tr>
 @endforeach
 <h3>Total:{{$sum}}$</h3>
+<form action="{{route('user.cart.destroy' , ['id' => $product->id])}}" method="post">
+    @csrf
+    <button type="submit">delete</button>
+</form>
