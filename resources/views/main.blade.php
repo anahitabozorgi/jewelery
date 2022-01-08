@@ -65,11 +65,18 @@
                     <td>{{$product->price1}}$</td>
                     <td><img src="{{asset('images')}}/{{$product->image1}}" style="max-width:200px;"/></td>
                     <td><a href="{{route('product.show',['id' => $product->id])}}">details</a></td>
+                    <button onclick="myFunction()">Add to cart</button>
                 </tr>
+                <br>
             @endforeach
             @endif
         @endauth
     </div>
 @endif
+<script>
+    function myFunction() {
+      alert("please sign in first");
+    }
+</script>
 </body>
 </html>
