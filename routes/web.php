@@ -23,6 +23,7 @@ Route::get('/ring', [ProductController::class, 'ring'])->name('ring');
 Route::get('/bracelet', [ProductController::class, 'bracelet'])->name('bracelet');
 Route::get('/earing', [ProductController::class, 'earing'])->name('earing');
 Route::get('/necklaces', [ProductController::class, 'necklaces'])->name('necklaces');
+Route::get('/search', [ProductController::class,'search'])->name('search');
 
 Auth::routes();
 
@@ -63,6 +64,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::get('/edit/{id}',[ProductController::class,'edit'])->name('edit');
         Route::post('/update',[ProductController::class,'update'])->name('update');
         Route::post('/delete/{id}',[ProductController::class,'destroy'])->name('destroy');
+        Route::view('/register','dashboard.admin.register')->name('register');
+        Route::post('/add',[AdminController::class,'create'])->name('add');
     });
 });
 
