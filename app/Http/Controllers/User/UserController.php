@@ -59,6 +59,11 @@ class UserController extends Controller
 
     }
 
+    function showUsersApi(){
+        $user = User::all();
+        return $user;
+    }
+
     function check(Request $request){
         $request->validate([
             'email'=>'required|email|exists:users,email',

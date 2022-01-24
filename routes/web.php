@@ -46,6 +46,8 @@ Route::prefix('user')->name('user.')->group(function(){
         Route::post('/cart/{id}', [CartController::class, 'cart'])->name('product.cart');
         Route::get('/cart',[CartController::class, 'cartshow'])->name('product.cartshow');
         Route::post('/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
+        Route::post('/order', [CartController::class, 'order'])->name('order');
+
    
 
     });
@@ -70,6 +72,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/delete/{id}',[ProductController::class,'destroy'])->name('destroy');
         Route::view('/register','dashboard.admin.register')->name('register');
         Route::post('/add',[AdminController::class,'create'])->name('add');
+        
     });
 });
 

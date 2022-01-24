@@ -41,5 +41,13 @@ class CartController extends Controller
         return back()->with('product_deleted', 'Product deleted successfully');
     }
     
+    public function order(Request $request,User $user){
+        $user = User::find($request->id);
+        $shows = DB::table('carts')->where('email1',$user->email)->delete();
+
+        return back()->with('ordered', 'Product ordered successfully');
+        
+    }
+    
 }
 

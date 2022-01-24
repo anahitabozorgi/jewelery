@@ -8,6 +8,10 @@
 </head>
 <body>
     <p>Admin dashboard</p>
+    <form action="{{ route('search') }}" method="GET">
+        <input type="text" name="search" required/>
+        <button type="submit">Search</button>
+    </form>
     @if (Session::has('product_deleted'))
         <div class="alert alert-success" role="alert">
             {{Session::get('product_deleted')}}
