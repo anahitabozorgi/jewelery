@@ -8,6 +8,10 @@
 </head>
 <body>
     <p>Admin dashboard</p>
+    <form action="{{ route('search') }}" method="GET">
+        <input type="text" name="search" required/>
+        <button type="submit">Search</button>
+    </form>
     @if (Session::has('product_deleted'))
         <div class="alert alert-success" role="alert">
             {{Session::get('product_deleted')}}
@@ -18,6 +22,9 @@
     <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
     <form action="{{ route('admin.logout') }}" method="post" id="logout-form">@csrf</form><br>
     <a href="{{route('ring')}}">ring</a>
+    <a href="{{route('bracelet')}}">Bracelet</a>
+    <a href="{{route('earing')}}">Earing</a>
+    <a href="{{route('necklaces')}}">Necklaces</a>
     <div>
         @foreach ($products as $product)
             <tr>

@@ -144,6 +144,11 @@ class ProductController extends Controller
         return view('dashboard.products.show2', ['product' => $product]);
     }
 
+    public function showProductsApi()
+    {
+        $product = Product::all();
+        return $product;
+    }
     /**
      * Display the specified resource.
      *

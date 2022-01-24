@@ -40,6 +40,9 @@
     @endif
     <a href="{{route('user.profile')}}">edit profile</a>
     <a href="{{route('ring')}}">ring</a>
+    <a href="{{route('bracelet')}}">Bracelet</a>
+    <a href="{{route('earing')}}">Earing</a>
+    <a href="{{route('necklaces')}}">Necklaces</a>
     <a href="{{ route('user.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
     <form action="{{ route('user.logout') }}" method="post" class="d-none" id="logout-form">@csrf</form><br>
 

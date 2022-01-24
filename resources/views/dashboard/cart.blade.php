@@ -19,3 +19,15 @@
 </tr>
 @endforeach
 <h3>Total:{{$sum}}$</h3>
+
+@if (Session::has('ordered'))
+<div class="alert alert-success" role="alert">
+    {{Session::get('ordered')}}
+</div>
+@endif
+<form action="{{route('user.order')}}" method="post">
+    @csrf
+    <input type="hidden" name="id" value="{{Auth::guard('web')->user()->id}}">
+    <button type="submit">Order now</button>
+</form>
+

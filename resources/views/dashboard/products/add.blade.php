@@ -9,7 +9,11 @@
 <body>
     <h2>Add New Post</h2>
     <div class="body">
-
+        @if(Session::has('error'))
+            <div class="alert alert-danger">
+                {{ Session::get('error')}}
+            </div>
+        @endif
         @if ($errors->any())
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
