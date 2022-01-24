@@ -27,6 +27,7 @@
                 </td>
                 <td><img src="{{asset('images')}}/{{$product->image1}}" style="max-width:200px;"/></td>
                 <td><a href="{{route('admin.edit',['id' => $product->id])}}">edit</a></td>
+                <td><a href="{{route('admin.product.show',['id' => $product->id])}}">details</a></td>
                 <a href="{{ route('admin.destroy', ['id' => $product->id]) }}" onclick="event.preventDefault();document.getElementById('destroy-form').submit();">delete</a>
                 <form action="{{ route('admin.destroy',['id' => $product->id]) }}" method="post" class="d-none" id="destroy-form">@csrf</form><br>
             </tr>

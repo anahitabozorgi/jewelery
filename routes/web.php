@@ -18,6 +18,7 @@ use App\Http\Controllers\ProductController;
 
 
 Route::get('/',[ProductController::class,'index1'])->name('home1');
+Route::get('/show/{id}', [ProductController::class, 'show2'])->name('product.show');
 
 
 Auth::routes();
@@ -33,6 +34,7 @@ Route::prefix('user')->name('user.')->group(function(){
 
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
         Route::view('/profile','dashboard.user.edit')->name('profile');
+        Route::get('/show/{id}', [ProductController::class, 'show'])->name('product.show');
         Route::get('/home',[ProductController::class,'index2'])->name('home');
         Route::post('/logout',[UserController::class,'logout'])->name('logout');
         Route::post('/update',[UserController::class,'update'])->name('update');
@@ -50,6 +52,7 @@ Route::prefix('admin')->name('admin.')->group(function(){
     });
 
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
+        Route::get('/show/{id}', [ProductController::class, 'show1'])->name('product.show');
         Route::get('/home',[ProductController::class,'index'])->name('home');
         Route::post('/logout',[AdminController::class,'logout'])->name('logout');
         Route::get('/create',[ProductController::class,'create'])->name('create');
