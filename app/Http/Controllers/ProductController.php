@@ -61,7 +61,6 @@ class ProductController extends Controller
         $request->validate([
             'ID1' => 'required',
             'title1' => 'required',
-            'image1' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'price1' => 'required',
             'gender1' => 'required',
             'color1' => 'required',
@@ -69,7 +68,6 @@ class ProductController extends Controller
         ],[
             'ID1.required'=>'The ID field is required.',
             'title1.required'=>'The Title field is required.',
-            'image1.mims'=>'The Image must be png.',
             'price1.required'=>'The Price field is required.',
             'gender1.required'=>'The Gender field is required.',
             'color1.required'=>'The Color field is required.',

@@ -32,8 +32,10 @@ Route::prefix('user')->name('user.')->group(function(){
     });
 
     Route::middleware(['auth:web','PreventBackHistory'])->group(function(){
+        Route::view('/profile','dashboard.user.edit')->name('profile');
         Route::get('/home',[ProductController::class,'index2'])->name('home');
-          Route::post('/logout',[UserController::class,'logout'])->name('logout');
+        Route::post('/logout',[UserController::class,'logout'])->name('logout');
+        Route::post('/update',[UserController::class,'update'])->name('update');
    
 
     });

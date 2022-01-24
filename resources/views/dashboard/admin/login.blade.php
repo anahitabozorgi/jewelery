@@ -31,7 +31,7 @@
                      </div>
                      <div class="form-group">
                          <button type="submit" class="btn btn-primary">Login</button>
-                         <a href="">forgot password?</a>
+                         <a href="{{route('password.request')}}">forgot password?</a>
                         </a>
                      </div>
                  </form>

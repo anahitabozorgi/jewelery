@@ -8,8 +8,10 @@
 </head>
 <body>
     <p>user dashboard</p>
+    <a href="{{route('user.profile')}}">edit profile</a>
     <a href="{{ route('user.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
     <form action="{{ route('user.logout') }}" method="post" class="d-none" id="logout-form">@csrf</form><br>
+
     @foreach ($products as $product)
     <tr>
         <td>{{$product->title1}}</td><br>
