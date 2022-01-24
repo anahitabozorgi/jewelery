@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +43,9 @@ Route::prefix('user')->name('user.')->group(function(){
         Route::get('/home',[ProductController::class,'index2'])->name('home');
         Route::post('/logout',[UserController::class,'logout'])->name('logout');
         Route::post('/update',[UserController::class,'update'])->name('update');
+        Route::post('/cart/{id}', [CartController::class, 'cart'])->name('product.cart');
+        Route::get('/cart',[CartController::class, 'cartshow'])->name('product.cartshow');
+        Route::post('/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
    
 
     });
