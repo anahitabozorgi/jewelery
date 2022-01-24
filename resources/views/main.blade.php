@@ -9,10 +9,6 @@
 <body>
     @if (Route::has('user.login'))
     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-        <form action="{{ route('search') }}" method="GET">
-            <input type="text" name="search" required/>
-            <button type="submit">Search</button>
-        </form>
         @auth
             <a href="{{ url('/user/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a><br>
             <br>

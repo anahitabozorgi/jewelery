@@ -19,6 +19,7 @@
 </tr>
 @endforeach
 <h3>Total:{{$sum}}$</h3>
+
 @if (Session::has('ordered'))
 <div class="alert alert-success" role="alert">
     {{Session::get('ordered')}}

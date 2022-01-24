@@ -22,6 +22,9 @@
     <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
     <form action="{{ route('admin.logout') }}" method="post" id="logout-form">@csrf</form><br>
     <a href="{{route('ring')}}">ring</a>
+    <a href="{{route('bracelet')}}">Bracelet</a>
+    <a href="{{route('earing')}}">Earing</a>
+    <a href="{{route('necklaces')}}">Necklaces</a>
     <div>
         @foreach ($products as $product)
             <tr>
