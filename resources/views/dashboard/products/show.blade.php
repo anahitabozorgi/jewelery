@@ -15,4 +15,4 @@
     <p>
         Gender: {{$product->gender1}}
     </p>
-    <a href="{{ route('user.home') }}">go back</a>
+  

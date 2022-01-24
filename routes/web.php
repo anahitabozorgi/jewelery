@@ -19,7 +19,10 @@ use App\Http\Controllers\ProductController;
 
 Route::get('/',[ProductController::class,'index1'])->name('home1');
 Route::get('/show/{id}', [ProductController::class, 'show2'])->name('product.show');
-
+Route::get('/ring', [ProductController::class, 'ring'])->name('ring');
+Route::get('/bracelet', [ProductController::class, 'bracelet'])->name('bracelet');
+Route::get('/earing', [ProductController::class, 'earing'])->name('earing');
+Route::get('/necklaces', [ProductController::class, 'necklaces'])->name('necklaces');
 
 Auth::routes();
 

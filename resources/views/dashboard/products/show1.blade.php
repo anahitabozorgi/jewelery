@@ -14,4 +14,3 @@
 <p>
     Gender: {{$product->gender1}}
 </p>
-<a href="{{ route('admin.home') }}">go back</a>
