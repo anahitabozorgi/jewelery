@@ -53,6 +53,22 @@ Route::prefix('product')->name('product.')->group(function(){
   }
     Product::create($request->all());
   });
+  Route::post('/login', function(Request $request){
+    $request->validate([
+        'email'=>'required|email|exists:users,email',
+        'password'=>'required'
+    ],[
+        'email.exists'=>'this email is not exists'
+    ]);
+
+    $creds = $request->only('email','password');
+    if(Auth::guard('web')->attempt($creds)){
+        return redirect()->route('user.home');
+    }
+    else{
+        return redirect()->route('user.login')->with('fail','incorrect data');
+    }
+  });
   Route::post('/delete/{id}',function($id){
     $product = Product::findOrFail($id);
     $product->delete();
