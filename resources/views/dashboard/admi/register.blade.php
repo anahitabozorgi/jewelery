@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-md-4 offset-md-4" style="margin-top: 45px;">
                   <h4>Add Admin</h4><hr>
-                  <form action="{{route('admi.add')}}" method="post">
+                  <form action="{{route('admin.admi.add')}}" method="post">
 
                     @if (Session::get('success'))
                     <div class="alert alert-success">
