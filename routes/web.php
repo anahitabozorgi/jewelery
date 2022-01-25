@@ -17,8 +17,6 @@ use App\Http\Controllers\CartController;
 |
 */
 
-Route::view('/admi/register','dashboard.admi.register')->name('admi.register');
-Route::post('/add',[AdminController::class,'create'])->name('admi.add');
 
 Route::get('/',[ProductController::class,'index1'])->name('home1');
 Route::get('/show/{id}', [ProductController::class, 'show2'])->name('product.show');
