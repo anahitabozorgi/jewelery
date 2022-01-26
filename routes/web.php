@@ -59,6 +59,8 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware(['guest:admin','PreventBackHistory'])->group(function(){
         Route::view('/login','dashboard.admin.login')->name('login');
         Route::post('/check',[AdminController::class,'check'])->name('check');
+        Route::view('/adregister','dashboard.admi.register')->name('register');
+        Route::post('/adadd',[AdminController::class,'create'])->name('adadd');
     });
 
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
