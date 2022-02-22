@@ -5,28 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>User login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <style>
-        .button {
-          background-color: white;
-          border: none;
-          color: black;
-          text-align: center;
-          text-decoration: none;
-          float: right;
-          display: inline-block;
-          font-size: 16px;
-          margin: 4px 2px;
-          cursor: pointer;
-        }
-    </style>
-    <p>user dashboard</p>
-    <form method="get" action="{{route('user.product.cartshow')}}" enctype="multipart/form-data">
-        @csrf
-        <input type="hidden" name="id" value="{{Auth::guard('web')->user()->id}}">
-        <input class="button" type="submit" value="your shopping cart"> 
-    </form>
+    <header>
+
+    <a href="" class="logo">Gemstone<span>.</span></a>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+
+    <nav class="navbar">
+        <a href="{{route('ring')}}">ring</a>
+        <a href="{{route('bracelet')}}">Bracelet</a>
+        <a href="{{route('earing')}}">Earing</a>
+        <a href="{{route('necklaces')}}">Necklaces</a>
+    </nav>
+
+    <div class="icons">
+        <form method="get" class="fas fa-shopping-cart" action="{{route('user.product.cartshow')}}" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="id" value="{{Auth::guard('web')->user()->id}}">
+            <input class="button" type="submit" value="shopping cart"> 
+        </form>
+        <a href="{{route('user.profile')}}" class="fas fa-user"></a>
+    </div>
+
+</header>
+
+<section class="home" id="home">
+
+    <div class="content">
+        <h3>Gemstone Gallary</h3>
+        <span> Most Joyful Occasions </span>
+        <p>Mark the moments with classic styles made to be cherished forever.</p>
+        <a href="#" class="btn">shop now</a>
+    </div>
+    
+</section>
+
+
     @if (Session::get('success'))
     <div class="alert alert-success">
         {{Session::get('success')}}
@@ -38,26 +57,76 @@
         {{Session::get('fail')}}
     </div>
     @endif
-    <a href="{{route('user.profile')}}">edit profile</a>
-    <a href="{{route('ring')}}">ring</a>
-    <a href="{{route('bracelet')}}">Bracelet</a>
-    <a href="{{route('earing')}}">Earing</a>
-    <a href="{{route('necklaces')}}">Necklaces</a>
-    <a href="{{ route('user.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
-    <form action="{{ route('user.logout') }}" method="post" class="d-none" id="logout-form">@csrf</form><br>
 
-    @foreach ($products as $product)
-    <tr>
-        <td>{{$product->title1}}</td><br>
-        <td>{{$product->price1}}$</td>
-        <td><img src="{{asset('images')}}/{{$product->image1}}" style="max-width:200px;"/></td>
-        <td><a href="{{route('user.product.show',['id' => $product->id])}}">details</a></td>
-        <td><form method="post" action="{{route('user.product.cart',['id' => $product->id])}}" enctype="multipart/form-data">
-            @csrf
-            <input type="hidden" name="id" value="{{Auth::guard('web')->user()->id}}">
-            <input type="submit" value="Add to Cart"> 
-        </form></td>
-    </tr>
-@endforeach
+    <section class="products" id="products">
+        @foreach ($products as $product)
+
+        <div class="box-container">
+
+            <div class="box">
+                <div class="image">
+                <a href="{{route('user.product.show',['id' => $product->id])}}"><img src="{{asset('images')}}/{{$product->image1}}"/></a> 
+                    <div class="icons">
+                    <form method="post" class="cart-btn" action="{{route('user.product.cart',['id' => $product->id])}}" enctype="multipart/form-data">
+                        @csrf
+                        <input type="hidden" name="id" value="{{Auth::guard('web')->user()->id}}">
+                        <input type="submit" value="Add to Cart"> 
+                    </form>
+                    </div>
+                </div>
+                <div class="content">
+                    <h3>{{$product->title1}}</h3>
+                    <div class="price"> {{$product->price1}}$ </div>
+                </div>
+            </div>
+        </div>
+        
+    @endforeach
+</section>
+<br>
+<br>
+
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="{{ route('home1') }}">home</a>
+            <a href="{{route('ring')}}">ring</a>
+            <a href="{{route('bracelet')}}">Bracelet</a>
+            <a href="{{route('earing')}}">Earing</a>
+            <a href="{{route('necklaces')}}">Necklaces</a>
+        </div>
+
+        <div class="box">
+            <h3>locations</h3>
+            <a href="#">Iran</a>
+            <a href="#">USA</a>
+            <a href="#">japan</a>
+            <a href="#">france</a>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <p>+548-248-9782</p>
+            <p>admin@gmail.com</p>
+            <p>Rasht, Iran - Golsar</p>
+        </div>
+        
+        <div class = "box">
+            <form action="{{ route('user.search') }}" method="GET">
+            <input type="text" name="search" placeholder="Search.." required/>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    </div>
+
+    <div class="credit"> created by <span> mr. web designer </span> | all rights reserved </div>
+
+</section>
+
 </body>
 </html>

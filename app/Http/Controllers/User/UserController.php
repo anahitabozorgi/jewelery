@@ -44,14 +44,12 @@ class UserController extends Controller
     {
         $request->validate([
             'name'=>'required',
-            'email'=>'required|email|unique:users,email',
-            'password'=>'min:8|max:30',
+            'email'=>'required|email',
         ]);
 
         $user = User::find($request->id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = \Hash::make($request->password);
         $save = $user->save();
 
         return back()->with('user_updated','user profile has updated');

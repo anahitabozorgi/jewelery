@@ -1,0 +1,239 @@
+/* Google Font Link */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins" , sans-serif;
+  }
+  body{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(227,204,173,255);
+    padding: 30px;
+  }
+  .container{
+    position: relative;
+    max-width: 850px;
+    width: 100%;
+    background: rgb(39, 37, 37);
+    padding: 40px 30px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    perspective: 2700px;
+  }
+
+  
+  .container .forms{
+    height: 90%;
+    width: 100%;
+    background: rgb(39, 37, 37);
+  }
+  .container .form-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .form-content .login-form,
+  .form-content .signup-formhu{
+    width: 100%;
+  }
+  .forms .form-content .title{
+    position: relative;
+    font-size: 24px;
+    font-weight: 500;
+    color: white;
+  }
+  .forms .form-content .title:before{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 25px;
+    background: #e84343;
+  }
+  .forms .signup-form  .title:before{
+    width: 20px;
+  }
+  .forms .form-content .input-boxes{
+    margin-top: 30px;
+  }
+  .forms .form-content .input-box{
+    display: flex;
+    align-items: center;
+    height: 50px;
+    width: 100%;
+    margin: 10px 0;
+    position: relative;
+  }
+  .form-content .input-box input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    color: white;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.863);
+    transition: all 0.3s ease;
+    background-color: rgb(39, 37, 37);
+  }
+  .form-content .input-box .img1{
+      border-bottom: none;
+  }
+  
+  .forms .form-content label{
+      color: white;
+  }
+
+  .forms .form-content .text{
+    font-size: 14px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+  }
+  .forms .form-content .text a{
+    text-decoration: none;
+  }
+  .forms .form-content .text a:hover{
+    text-decoration: underline;
+  }
+  .forms .form-content .button{
+    color: rgb(255, 255, 255);
+    margin-top: 40px;
+  }
+  .forms .form-content .button input{
+    color: rgb(39, 37, 37);
+    background: rgba(205,176,134,255);
+    border-radius: 6px;
+    padding: 0;
+    cursor: pointer;
+  }
+  .forms .form-content a{
+    color: #f77d7d;
+    cursor: pointer;
+  }
+  .forms .form-content label:hover{
+    text-decoration: underline;
+  }
+  .forms .form-content .login-text,
+  .forms .form-content .sign-up-text{
+    text-align: center;
+    margin-top: 25px;
+  }
+  .container #flip{
+    display: none;
+  }
+  @media (max-width: 730px) {
+    .container .cover{
+      display: none;
+    }
+    .form-content .login-form,
+    .form-content .signup-form{
+      width: 100%;
+    }
+    .form-content .signup-form{
+      display: none;
+    }
+    .container #flip:checked ~ .forms .signup-form{
+      display: block;
+    }
+    .container #flip:checked ~ .forms .login-form{
+      display: none;
+    }
+  }
+  @media (max-width:1391px){
+    
+    html{
+        font-size: 55%;
+    }
+
+    header{
+        padding:2rem;
+    }
+
+    section{
+        padding:3rem;
+    }
+
+    .home{
+        background-position: left;
+    }
+    .forms .form-content label{
+      font-size: 2rem;
+  }
+
+}
+
+@media (max-width:806px){
+
+    header .fa-bars{
+        display: block;
+    }
+
+    header .navbar{
+        position:absolute;
+        top:100%; left:0; right:0;
+        background:#eee;
+        border-top: .1rem solid rgba(0,0,0,.1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    }
+
+    header #toggler:checked ~ .navbar{
+        clip-path:polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    }
+
+    header .navbar a{
+        margin:1.5rem;
+        padding:1.5rem;
+        background:#fff;
+        border:.1rem solid rgba(0,0,0,.1);
+        display: block;
+    }
+
+    .home .content h3{
+        font-size: 4rem;
+    }
+
+    .home .content span{
+        font-size: 2.5rem;
+    }
+
+    .icons-container .icons h3{
+        font-size: 2rem;
+    }
+    
+    .icons-container .icons span{
+        font-size: 1.7rem;
+    }
+    .forms .form-content label{
+      font-size: 2rem;
+  }
+    
+}
+
+@media (max-width:450px){
+    
+    html{
+        font-size: 40%;
+    }
+    .forms .form-content label{
+      font-size: 2.5rem;
+  }
+
+}
+@media (max-width:406px){
+    
+    html{
+        font-size: 35%;
+    }
+    header .icons input{
+        font-size: 1.7rem;
+    }
+    .forms .form-content label{
+      font-size: 3rem;
+  }
+
+}

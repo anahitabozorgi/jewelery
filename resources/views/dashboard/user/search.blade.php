@@ -33,12 +33,7 @@
     </div>
 
 </header>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br><br><br><br><br><br><br>
 
 
     @if (Session::get('success'))
@@ -54,7 +49,8 @@
     @endif
 
     <section class="products" id="products">
-        @foreach ($rings as $product)
+        @if($products->isNotEmpty())
+        @foreach ($products as $product)
 
         <div class="box-container">
 
@@ -77,6 +73,11 @@
         </div>
         
     @endforeach
+    @else 
+    <div>
+        <h2>No posts found</h2>
+    </div>
+    @endif
 </section>
 <br>
 <br>

@@ -2,38 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User login</title>
+    <title>category</title>
     <link rel="stylesheet" type="text/css" href="{{ url('/css/style.css') }}" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <header>
-
-    <a href="{{ route('home1') }}" class="logo">Gemstone<span>.</span></a>
+    <a href="{{route('home1')}}" class="logo">Gemstone<span>.</span></a>
     <input type="checkbox" name="" id="toggler">
     <label for="toggler" class="fas fa-bars"></label>
 
     <nav class="navbar">
-        <a href="{{route('ring')}}">ring</a>
-        <a href="{{route('bracelet')}}">Bracelet</a>
-        <a href="{{route('earing')}}">Earing</a>
-        <a href="{{route('necklaces')}}">Necklaces</a>
+        <a href="{{route('user.ring')}}">ring</a>
+        <a href="{{route('user.bracelet')}}">Bracelet</a>
+        <a href="{{route('user.earing')}}">Earing</a>
+        <a href="{{route('user.necklaces')}}">Necklaces</a>
     </nav>
 
     <div class="icons">
-        <form method="get" class="fas fa-shopping-cart" action="{{route('user.product.cartshow')}}" enctype="multipart/form-data">
+        <form method="get" class="fas fa-shopping-cart"  enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="id" value="{{Auth::guard('web')->user()->id}}">
-            <input class="button" type="submit" value="shopping cart"> 
+            <input class="button" onclick="myFunction()" type="submit" value="shopping cart"> 
         </form>
-        <a href="{{route('user.profile')}}" class="fas fa-user"></a>
+        <a href="{{ route('user.login') }}" class="fas fa-user"></a>
     </div>
 
-</header>
-<br>
+    </header>
+    <br>
 <br>
 <br>
 <br>
@@ -60,13 +57,9 @@
 
             <div class="box">
                 <div class="image">
-                <a href="{{route('user.product.show',['id' => $product->id])}}"><img src="{{asset('images')}}/{{$product->image1}}"/></a> 
+                <a href="{{route('product.show',['id' => $product->id])}}"><img src="{{asset('images')}}/{{$product->image1}}"/></a> 
                     <div class="icons">
-                    <form method="post" class="cart-btn" action="{{route('user.product.cart',['id' => $product->id])}}" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" name="id" value="{{Auth::guard('web')->user()->id}}">
-                        <input type="submit" value="Add to Cart"> 
-                    </form>
+                    <button onclick="myFunction()">Add to cart</button>
                     </div>
                 </div>
                 <div class="content">
@@ -77,12 +70,12 @@
         </div>
         
     @endforeach
-</section>
-<br>
-<br>
+    </section>
+    <br>
+    <br>
 
 
-<section class="footer">
+    <section class="footer">
 
     <div class="box-container">
 
@@ -109,12 +102,15 @@
             <p>admin@gmail.com</p>
             <p>Rasht, Iran - Golsar</p>
         </div>
-
     </div>
 
-    <div class="credit"> created by <span> mr. web designer </span> | all rights reserved </div>
+    <div class="credit"> © <span>2022 Do Space</span> | all rights reserved </div>
 
-</section>
-
+    </section>
+<script>
+    function myFunction() {
+      alert("please sign in first");
+    }
+</script>
 </body>
 </html>

@@ -1,41 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="UTF-8">
+    <title>User Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/login.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Login</title>
-
-</head>
-<body style="background-color:#c8d9e8 !important">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-md-4" style="margin-top: 45px">
-                 <h4>Admin Login</h4><hr>
-                 <form action="{{route('admin.check')}}" method="post">
-                    @if (Session::get('fail'))
-                        <div class="alert alert-danger">
-                            {{ Session::get('fail') }}
-                        </div>
-                    @endif
-                    @csrf
-                     <div class="form-group">
-                         <label for="email">Email</label>
-                         <input type="text" class="form-control" name="email" placeholder="Enter email address" value="{{ old('email') }}">
-                         <span class="text-danger">@error('email'){{$message}}@enderror</span>
-                     </div>
-                     <div class="form-group">
-                         <label for="password">Password</label>
-                         <input type="password" class="form-control" name="password" placeholder="Enter password" value="{{ old('password') }}">
-                         <span class="text-danger">@error('password'){{$message}}@enderror</span>
-                     </div>
-                     <div class="form-group">
-                         <button type="submit" class="btn btn-primary">Login</button>
-                        </a>
-                     </div>
-                 </form>
-            </div>
+   </head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+      <img src="{{asset('images')}}/frontImg.jpg"/>
+      </div>
+      <div class="back">
+        <div class="text">
+          <span class="text-1">Complete miles of journey <br> with one step</span>
+          <span class="text-2">Let's get started</span>
         </div>
+      </div>
     </div>
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Admin Login</div>
+          <form action="{{route('admin.check')}}" method="post">
+            @csrf
+            @if (Session::get('fail'))
+            <div class="alert alert-danger">
+                {{Session::get('fail')}}
+            </div>  
+            @endif
+            <div class="input-boxes">
+              <div class="input-box">
+                <label for="email"></label>
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Enter your email" name="email" value="{{old('email')}}">
+                <span class="text-danger">@error('email'){{$message}} @enderror</span>
+              </div>
+              <div class="input-box">
+                <label for="password"></label>
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password" name="password" value="{{old('password')}}">
+                <span class="text-danger">@error('password'){{$message}} @enderror</span>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="Submit">
+        </form>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
 </body>
 </html>

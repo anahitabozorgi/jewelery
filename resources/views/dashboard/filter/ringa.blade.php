@@ -12,7 +12,7 @@
 <body>
     <header>
 
-    <a href="" class="logo">Gemstone<span>.</span></a>
+    <a href="{{route('admin.home')}}" class="logo">Gemstone<span>.</span></a>
     <input type="checkbox" name="" id="toggler">
     <label for="toggler" class="fas fa-bars"></label>
 
@@ -48,7 +48,7 @@
     @endif
 
     <section class="products" id="products">
-        @foreach ($products as $product)
+        @foreach ($rings as $product)
 
         <div class="box-container">
 
@@ -70,6 +70,7 @@
 </section>
 <br>
 <br>
+
 
 
 </body>

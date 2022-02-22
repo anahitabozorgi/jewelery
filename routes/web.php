@@ -33,6 +33,11 @@ Route::prefix('user')->name('user.')->group(function(){
     Route::middleware(['guest:web','PreventBackHistory'])->group(function(){
           Route::view('/login','dashboard.user.login')->name('login');
           Route::view('/register','dashboard.user.register')->name('register');
+          Route::get('/ring', [ProductController::class, 'ring1'])->name('ring');
+        Route::get('/bracelet', [ProductController::class, 'bracelet1'])->name('bracelet');
+        Route::get('/earing', [ProductController::class, 'earing1'])->name('earing');
+        Route::get('/necklaces', [ProductController::class, 'necklaces1'])->name('necklaces');
+        Route::get('/search', [ProductController::class,'search'])->name('search');
           Route::post('/create',[UserController::class,'create'])->name('create');
           Route::post('/check',[UserController::class,'check'])->name('check');
     });
@@ -47,6 +52,7 @@ Route::prefix('user')->name('user.')->group(function(){
         Route::get('/cart',[CartController::class, 'cartshow'])->name('product.cartshow');
         Route::post('/destroy/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
         Route::post('/order', [CartController::class, 'order'])->name('order');
+        Route::get('/search', [ProductController::class,'usersearch'])->name('search');
 
    
 
@@ -72,6 +78,10 @@ Route::prefix('admin')->name('admin.')->group(function(){
         Route::post('/delete/{id}',[ProductController::class,'destroy'])->name('destroy');
         Route::view('/register','dashboard.admin.register')->name('register');
         Route::post('/add',[AdminController::class,'create'])->name('add');
+        Route::get('/ring', [ProductController::class, 'ringa'])->name('ring');
+        Route::get('/bracelet', [ProductController::class, 'braceleta'])->name('bracelet');
+        Route::get('/earing', [ProductController::class, 'earinga'])->name('earing');
+        Route::get('/necklaces', [ProductController::class, 'necklacesa'])->name('necklaces');
         
     });
 });

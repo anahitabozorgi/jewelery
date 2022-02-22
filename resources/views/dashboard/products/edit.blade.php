@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +6,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>edit post</title>
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/edit.css') }}" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <h2> Edit Product</h2>
-    <div class="body">
-        @if ($errors->any())
+<header>
+
+    <a href="{{ route('admin.home') }}" class="logo">Gemstone<span>.</span></a>
+    <input type="checkbox" name="" id="toggler">
+    <label for="toggler" class="fas fa-bars"></label>
+
+    <nav class="navbar">
+        <a href="{{route('admin.ring')}}">ring</a>
+        <a href="{{route('admin.bracelet')}}">Bracelet</a>
+        <a href="{{route('admin.earing')}}">Earing</a>
+        <a href="{{route('admin.necklaces')}}">Necklaces</a>
+        <a href="{{ route('admin.create') }}">new post</a>
+    </nav>
+
+    <div class="icons">
+        <a href="{{ route('admin.logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a>
+        <a href="{{ route('admin.register') }}" class="fa fa-user-plus"></a>
+        <form action="{{ route('admin.logout') }}" method="post" id="logout-form">@csrf</form>
+    </div>
+
+</header>
+
+<section class="home" id="home">
+
+<div class="body">
+@if ($errors->any())
             <div class="alert alert-danger">
                 <strong>Whoops!</strong> There were some problems with your input.<br><br>
                 <ul>
@@ -27,10 +54,10 @@
 
         <form method="post" action="{{route('admin.update')}}" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="id" value="{{$product->id}}">
+        <input type="hidden" name="id" value="{{$product->id}}">
             <div class="form-group">
 
-                <label for="ID1">Jewelery ID:</label> 
+            <label for="ID1">Jewelery ID:</label> 
                 <input type="text" name="ID1" value="{{$product->ID1}}"><br>
                 <br>
                 <label for="title1">Jewelery Title:</label>
@@ -38,44 +65,36 @@
                 <br>
                 <label for="price1">Price:</label>
                 <input type="text" name="price1" value="{{$product->price1}}"><br>
-                <img src="{{asset('images')}}/{{$product->image1}}" alt="product image" style="max-width: 200px">
-                <br>
+
+                <label for="color1">Color:</label>
+                <select name="color1" id="color1">
+                <option selected>{{$product->color1}}</option>
+                <option value="Gold">Gold</option>
+                <option value="RoseGold">RoseGold</option>
+                <option value="Silver">Silver</option>
+                </select><br>
         
-                <label for="file">Jewelery Image:</label>
-                <input type="file" name="file" class="form-control">
-                <br>
-                <br>
+                <label for="filter1">Category:</label>
+                <select name="filter1" id="filter1">
+                <option selected>{{$product->filter1}}</option>
+                <option value="bracelet">bracelet</option>
+                <option value="necklaces">necklaces</option>
+                <option value="earing">earing</option>
+                <option value="ring">ring</option>
+                </select><br>
 
-                <label for="color1">Color:</label><br>
-                <input type="radio" id="Gold" name="color1" value="Gold" {{ $product->color1 == 'Gold' ? 'checked' : '' }}>
-                <label for="Gold">Gold</label><br>
-                <input type="radio" id="RoseGold" name="color1" value="RoseGold" {{ $product->color1 == 'RoseGold' ? 'checked' : '' }}>
-                <label for="RoseGold">RoseGold</label><br>
-                <input type="radio" id="Silver" name="color1" value="Silver" {{ $product->color1 == 'Silver' ? 'checked' : '' }}>
-                <label for="Silver">Silver</label><br>
-        
-                <label for="gender1">Gender:</label><br>
-                <input type="radio" id="female" name="gender1" value="female" {{ $product->gender1 == 'female' ? 'checked' : '' }}>
-                <label for="female">female</label><br>
-                <input type="radio" id="male" name="gender1" value="male" {{ $product->gender1 == 'male' ? 'checked' : '' }}>
-                <label for="male">male</label><br>
+                <label for="gender1">Gender:</label>
+                <select name="gender1" id="gender1">
+                <option selected>{{$product->gender1}}</option>
+                <option value="female">female</option>
+                <option value="male">male</option>
+                </select><br>
 
-                <label for="filter1">Filter:</label><br>
-                    <input type="radio" id="Bracelet" name="filter1" value="Bracelet" {{ $product->filter1 == 'Bracelet' ? 'checked' : '' }}>
-                    <label for="Bracelet">Bracelet</label><br>
-
-                    <input type="radio" id="Ring" name="filter1" value="Ring" {{ $product->filter1 == 'Ring' ? 'checked' : '' }}>
-                    <label for="Ring">Ring</label><br>
-
-                    <input type="radio" id="Earing" name="filter1" value="Earing" {{ $product->filter1 == 'Earing' ? 'checked' : '' }}>
-                    <label for="Earing">Earing</label><br>
-
-                    <input type="radio" id="Necklaces" name="filter1" value="Necklaces" {{ $product->filter1 == 'Necklaces' ? 'checked' : '' }}>
-                    <label for="Necklaces">Necklaces</label><br>
-
-                <input type="submit" value="Update product"> 
+                <input class="sub" type="submit" value="Update ptoduct"> 
             </div>
         </form>
     </div>
+    
+</section>
 </body>
 </html>

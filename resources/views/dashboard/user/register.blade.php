@@ -1,62 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" dir="ltr">
+  <head>
     <meta charset="UTF-8">
+    <title>User Singup</title>
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/login.css') }}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>User Register</title>
-</head>
+   </head>
 <body>
-
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 offset-md-4" style="margin-top: 45px;">
-                  <h4>User Register</h4><hr>
-                  <form action="{{route('user.create')}}" method="post">
-
-                    @if (Session::get('success'))
-                    <div class="alert alert-success">
-                        {{Session::get('success')}}
-                    </div>   
-                    @endif
-
-                    @if(Session::get('fail'))
-                    <div class="alert alert-danger">
-                        {{Session::get('fail')}}
-                    </div>
-                    @endif
-
-                    @csrf
-                      <div class="form-group">
-                          <label for="name">Name</label>
-                          <input type="text" class="form-control" name="name" placeholder="Enter full name" value="{{ old('name') }}">
-                          <span class="text-danger">@error('name'){{$message}} @enderror</span>
-                              
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" class="form-control" name="email" placeholder="Enter email address" value="{{ old('email') }}">
-                        <span class="text-danger">@error('email'){{$message}} @enderror</span>
-                    </div>
-                      <div class="form-group">
-                          <label for="password">Password</label>
-                          <input type="password" class="form-control" name="password" placeholder="Enter password" value="{{ old('password') }}">
-                          <span class="text-danger">@error('password'){{$message}} @enderror</span>
-                      </div>
-                      <div class="form-group">
-                        <label for="cpassword">Confirm Password</label>
-                        <input type="password" class="form-control" name="cpassword" placeholder="Enter confirm password" value="{{ old('cpassword') }}">
-                        <span class="text-danger">@error('cpassword'){{$message}} @enderror</span>
-                    </div>
-                      <div class="form-group">
-                          <button type="submit" class="btn btn-primary">Register</button>
-                      </div>
-                      <br>
-                      <a href="{{ route('user.login') }}">I already have an account</a>
-                  </form>
-            </div>
-        </div>
+  <div class="container">
+    <input type="checkbox" id="flip">
+    <div class="cover">
+      <div class="front">
+      <img src="{{asset('images')}}/pexels-dmitry-zvolskiy-1721937.jpg"/>
+      </div>
     </div>
-    
+    <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Singup</div>
+          <form action="{{route('user.create')}}" method="post">
+            @csrf
+            @if (Session::get('success'))
+                <div class="alert alert-success">
+                    {{Session::get('success')}}
+                </div>   
+            @endif
+
+            @if(Session::get('fail'))
+                <div class="alert alert-danger">
+                    {{Session::get('fail')}}
+                </div>
+            @endif
+            <div class="input-boxes">
+            <div class="input-box">
+                <label for="name"></label>
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Enter your name" name="name" value="{{old('name')}}">
+                <span class="text-danger">@error('name'){{$message}} @enderror</span>
+              </div>
+              <div class="input-box">
+                <label for="email"></label>
+                <i class="fas fa-envelope"></i>
+                <input type="text" placeholder="Enter your email" name="email" value="{{old('email')}}">
+                <span class="text-danger">@error('email'){{$message}} @enderror</span>
+              </div>
+              <div class="input-box">
+                <label for="password"></label>
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password" name="password" value="{{old('password')}}">
+                <span class="text-danger">@error('password'){{$message}} @enderror</span>
+              </div>
+              <div class="input-box">
+                <label for="cpassword"></label>
+                <i class="fas fa-lock"></i>
+                <input type="password" placeholder="Enter your password" name="cpassword" value="{{old('cpassword')}}">
+                <span class="text-danger">@error('cpassword'){{$message}} @enderror</span>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="signup">
+              </div>
+              <div class="text sign-up-text">Do have an account? <label for="flip"><a href="{{ route('user.login') }}"> login now</a></label></div>
+            </div>
+        </form>
+      </div>
+    </div>
+    </div>
+    </div>
+  </div>
 </body>
 </html>

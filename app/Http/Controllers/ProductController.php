@@ -180,6 +180,54 @@ class ProductController extends Controller
         return view('dashboard.filter.earing')->with('earings' , $earings);
     }
 
+    public function ringa()
+    {
+        $rings = DB::table('products')->where('filter1', 'ring')->get();
+        return view('dashboard.filter.ringa')->with('rings' , $rings);
+    }
+
+    public function braceleta()
+    {
+        $bracelets = DB::table('products')->where('filter1', 'bracelet')->get();
+        return view('dashboard.filter.braceleta')->with('bracelets' , $bracelets);
+    }
+
+    public function necklacesa()
+    {
+        $necklaces = DB::table('products')->where('filter1', 'necklaces')->get();
+        return view('dashboard.filter.necklacesa')->with('necklaces' , $necklaces);
+    }
+
+    public function earinga()
+    {
+        $earings = DB::table('products')->where('filter1', 'earing')->get();
+        return view('dashboard.filter.earinga')->with('earings' , $earings);
+    }
+    public function ring1()
+    {
+        $rings = DB::table('products')->where('filter1', 'ring')->get();
+        return view('dashboard.filter.ring1')->with('rings' , $rings);
+    }
+
+    public function bracelet1()
+    {
+        $bracelets = DB::table('products')->where('filter1', 'bracelet')->get();
+        return view('dashboard.filter.bracelete1')->with('bracelets' , $bracelets);
+    }
+
+    public function necklaces1()
+    {
+        $necklaces = DB::table('products')->where('filter1', 'necklaces')->get();
+        return view('dashboard.filter.necklaces1')->with('necklaces' , $necklaces);
+    }
+
+    public function earing1()
+    {
+        $earings = DB::table('products')->where('filter1', 'earing')->get();
+        return view('dashboard.filter.earing1')->with('earings' , $earings);
+    }
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -192,7 +240,6 @@ class ProductController extends Controller
         $request->validate([
             'ID1' => 'required',
             'title1' => 'required',
-            'image1' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'price1' => 'required',
             'gender1' => 'required',
             'color1' => 'required',
@@ -200,7 +247,6 @@ class ProductController extends Controller
         ],[
             'ID1.required'=>'The ID field is required.',
             'title1.required'=>'The Title field is required.',
-            'image1.mims'=>'The Image must be png.',
             'price1.required'=>'The Price field is required.',
             'gender1.required'=>'The Gender field is required.',
             'color1.required'=>'The Color field is required.',
@@ -210,9 +256,6 @@ class ProductController extends Controller
         $ID1 = $request->ID1;
         $title1 = $request->title1;
         $price1 = $request->price1;
-        $image1 = $request->file('file');
-        $imageName = time().'.'.$image1->extension();
-        $image1 ->move(public_path('images'),$imageName);
         $gender1 = $request->gender1;
         $color1 = $request->color1;
         $filter1 = $request->filter1;
@@ -221,7 +264,6 @@ class ProductController extends Controller
         $product->ID1 = $ID1;
         $product->title1 = $title1;
         $product->price1 = $price1;
-        $product->image1 = $imageName;
         $product->gender1 = $gender1;
         $product->color1 = $color1;
         $product->filter1 = $filter1;
@@ -244,7 +286,8 @@ class ProductController extends Controller
         $product =  Product::find($id);
         unlink(public_path('images').'/'.$product->image1);
         $product->delete();
-        return back()->with('product_deleted', 'Product deleted successfully');
+        $products = Product::all();
+        return view('dashboard.admin.home',compact('products'));
     }
 
     public function search(Request $request){
@@ -252,7 +295,17 @@ class ProductController extends Controller
 
         $products = Product::query()
             ->where('title1', 'LIKE', "%{$search}%")
+            ->orWhere('filter1', 'LIKE', "%{$search}%")
             ->get();
         return view('dashboard.search', compact('products'));
+    }
+    public function usersearch(Request $request){
+        $search = $request->input('search');
+
+        $products = Product::query()
+            ->where('title1', 'LIKE', "%{$search}%")
+            ->orWhere('filter1', 'LIKE', "%{$search}%")
+            ->get();
+        return view('dashboard.user.search', compact('products'));
     }
 }
